@@ -7,6 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const app = express();
 const indexRouter = require('./routs/index')
 const authorRouter = require('./routs/authors')
+const bookRouter = require('./routs/books')
 const bodyParser = require('body-parser')
 
 app.set('view engine', 'ejs') //which view engine we r using
@@ -27,6 +28,7 @@ db.once("open",()=>console.log('db connected sucessfully'))   //succefully conne
 
 app.use('/',indexRouter);
 app.use('/authors',authorRouter);
+app.use('/books',bookRouter);
 
 
 app.listen( process.env.PORT || 3000, ()=>{
