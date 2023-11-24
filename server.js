@@ -9,11 +9,13 @@ const indexRouter = require('./routs/index')
 const authorRouter = require('./routs/authors')
 const bookRouter = require('./routs/books')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 
 app.set('view engine', 'ejs') //which view engine we r using
 app.set('views' , __dirname + '/views'); // where the views coming from
 app.set('layout', 'layouts/layout') //tells where layout file are
 app.use( expressLayouts );
+app.use( methodOverride('_method') );
 app.use( express.static('public'))
 app.use( bodyParser.urlencoded({ extended: true, limit: '10mb'}));
 
